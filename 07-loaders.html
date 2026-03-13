@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebRM Core - Р›РѕР°РґРµСЂС‹</title>
+  <title>WebRM Core - Лоадеры</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./bootstrap-codex.css">
 </head>
@@ -14,59 +14,59 @@
         <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./01-dashboard.html">Р”Р°С€Р±РѕСЂРґ</a></li>
-        <li><a href="./02-registry.html">Р РµРµСЃС‚СЂ</a></li>
-        <li><a href="./03-project-card.html">РљР°СЂС‚РѕС‡РєР° РїСЂРѕРµРєС‚Р°</a></li>
-        <li><a href="./04-analytics.html">РђРЅР°Р»РёС‚РёРєР°</a></li>
-        <li><a href="./05-workflow.html">Р—Р°РґР°С‡Рё</a></li>
-        <li><a href="./06-form-modal-bootstrap.html">Р¤РѕСЂРјР° + Modal</a></li>
-        <li class="active"><a href="./07-loaders.html">Р›РѕР°РґРµСЂС‹</a></li>
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li class="active"><a href="./07-loaders.html">Лоадеры</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="container-fluid wrm-container">
     <div class="wrm-jumbotron">
-      <h1>Р’Р°СЂРёР°РЅС‚С‹ Р»РѕР°РґРµСЂРѕРІ РґР»СЏ CRM</h1>
-      <p>РќР°Р±РѕСЂ Р»РѕРєР°Р»СЊРЅС‹С… РёРЅРґРёРєР°С‚РѕСЂРѕРІ Р·Р°РіСЂСѓР·РєРё Рё РѕР±С‰РёР№ Р»РѕР°РґРµСЂ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РґРѕР»РіРёС… РѕРїРµСЂР°С†РёР№.</p>
+      <h1>Варианты лоадеров для CRM</h1>
+      <p>Набор локальных индикаторов загрузки и общий лоадер страницы для долгих операций.</p>
     </div>
 
     <div class="panel panel-default wrm-panel">
-      <div class="panel-heading">Р›РѕРєР°Р»СЊРЅС‹Рµ Р»РѕР°РґРµСЂС‹ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ</div>
+      <div class="panel-heading">Локальные лоадеры компонентов</div>
       <div class="panel-body">
         <div class="wrm-loader-grid">
           <div class="wrm-loader-card">
             <h4 class="wrm-loader-title">Bootstrap Spinner</h4>
             <div class="wrm-loader-center">
-              <span class="glyphicon glyphicon-refresh wrm-spin-icon" aria-label="Р—Р°РіСЂСѓР·РєР°"></span>
+              <span class="glyphicon glyphicon-refresh wrm-spin-icon" aria-label="Загрузка"></span>
             </div>
-            <div class="wrm-loader-note">Р‘С‹СЃС‚СЂС‹Р№ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РІР°СЂРёР°РЅС‚.</div>
+            <div class="wrm-loader-note">Быстрый стандартный вариант.</div>
           </div>
 
           <div class="wrm-loader-card">
-            <h4 class="wrm-loader-title">РљРѕР»СЊС†Рѕ</h4>
+            <h4 class="wrm-loader-title">Кольцо</h4>
             <div class="wrm-loader-center">
-              <div class="wrm-ring-loader" aria-label="Р—Р°РіСЂСѓР·РєР°"></div>
+              <div class="wrm-ring-loader" aria-label="Загрузка"></div>
             </div>
-            <div class="wrm-loader-note">РќРµР№С‚СЂР°Р»СЊРЅС‹Р№ РєРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ СЃС‚РёР»СЊ.</div>
+            <div class="wrm-loader-note">Нейтральный корпоративный стиль.</div>
           </div>
 
           <div class="wrm-loader-card">
-            <h4 class="wrm-loader-title">РўРѕС‡РєРё</h4>
+            <h4 class="wrm-loader-title">Точки</h4>
             <div class="wrm-loader-center">
-              <div class="wrm-dots-loader" aria-label="Р—Р°РіСЂСѓР·РєР°">
+              <div class="wrm-dots-loader" aria-label="Загрузка">
                 <span></span><span></span><span></span>
               </div>
             </div>
-            <div class="wrm-loader-note">РҐРѕСЂРѕС€Рѕ РґР»СЏ РЅРµР±РѕР»СЊС€РёС… РІРёРґР¶РµС‚РѕРІ.</div>
+            <div class="wrm-loader-note">Хорошо для небольших виджетов.</div>
           </div>
 
           <div class="wrm-loader-card">
-            <h4 class="wrm-loader-title">Р›РёРЅРµР№РЅС‹Р№</h4>
+            <h4 class="wrm-loader-title">Линейный</h4>
             <div class="wrm-loader-center" style="width:100%;">
               <div class="wrm-loader-bar"></div>
             </div>
-            <div class="wrm-loader-note">РЈРјРµСЃС‚РµРЅ РґР»СЏ С‚Р°Р±Р»РёС† Рё СЂРµРµСЃС‚СЂРѕРІ.</div>
+            <div class="wrm-loader-note">Уместен для таблиц и реестров.</div>
           </div>
 
           <div class="wrm-loader-card">
@@ -78,39 +78,39 @@
                 <div class="wrm-skeleton-line w40"></div>
               </div>
             </div>
-            <div class="wrm-loader-note">РРјРёС‚Р°С†РёСЏ Р·Р°РіСЂСѓР·РєРё РєР°СЂС‚РѕС‡РµРє/СЃС‚СЂРѕРє.</div>
+            <div class="wrm-loader-note">Имитация загрузки карточек/строк.</div>
           </div>
 
           <div class="wrm-loader-card">
-            <h4 class="wrm-loader-title">Р›РѕР°РґРµСЂ РЅР° РєРЅРѕРїРєРµ</h4>
+            <h4 class="wrm-loader-title">Лоадер на кнопке</h4>
             <div class="wrm-loader-center">
               <button type="button" class="btn btn-primary wrm-btn-loading">
-                <span class="glyphicon glyphicon-refresh"></span> РЎРѕС…СЂР°РЅРµРЅРёРµ...
+                <span class="glyphicon glyphicon-refresh"></span> Сохранение...
               </button>
             </div>
-            <div class="wrm-loader-note">Р”Р»СЏ РґРµР№СЃС‚РІРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</div>
+            <div class="wrm-loader-note">Для действий пользователя.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="panel panel-default wrm-panel">
-      <div class="panel-heading">РћР±С‰РёР№ Р»РѕР°РґРµСЂ СЃС‚СЂР°РЅРёС†С‹</div>
+      <div class="panel-heading">Общий лоадер страницы</div>
       <div class="panel-body">
         <div class="wrm-btn-demo">
-          <button class="btn btn-default" id="show-loader-2s">РџРѕРєР°Р·Р°С‚СЊ РЅР° 2 СЃРµРєСѓРЅРґС‹</button>
-          <button class="btn btn-default" id="show-loader-5s">РџРѕРєР°Р·Р°С‚СЊ РЅР° 5 СЃРµРєСѓРЅРґ</button>
+          <button class="btn btn-default" id="show-loader-2s">Показать на 2 секунды</button>
+          <button class="btn btn-default" id="show-loader-5s">Показать на 5 секунд</button>
         </div>
       </div>
     </div>
 
-    <div class="wrm-footer-note">РЁР°Р±Р»РѕРЅ 7/7: Р›РѕР°РґРµСЂС‹ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ Рё РѕР±С‰РёР№ Р»РѕР°РґРµСЂ СЃС‚СЂР°РЅРёС†С‹.</div>
+    <div class="wrm-footer-note">Шаблон 7/7: Лоадеры компонентов и общий лоадер страницы.</div>
   </div>
 
   <div class="wrm-page-loader" id="globalPageLoader" aria-live="polite" aria-busy="true">
     <div class="wrm-page-loader-box">
       <div class="wrm-ring-loader" style="margin: 0 auto;"></div>
-      <p>Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…, РїРѕР¶Р°Р»СѓР№СЃС‚Р° РїРѕРґРѕР¶РґРёС‚Рµ...</p>
+      <p>Загрузка данных, пожалуйста подождите...</p>
     </div>
   </div>
 
