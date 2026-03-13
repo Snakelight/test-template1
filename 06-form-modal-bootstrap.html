@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - Форма и Modal (Bootstrap)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li class="active"><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Пример формы заполнения на Bootstrap Grid</h1>
+      <p>Шаблон для ввода заявки с валидацией полей и подтверждением через модальное окно.</p>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Новая заявка на изменение процесса</div>
+      <div class="panel-body">
+        <form id="request-form" class="wrm-form-grid">
+          <div class="row">
+            <div class="col-md-4 col-sm-6"><div class="form-group"><label for="projectCode">Код проекта *</label><input type="text" class="form-control" id="projectCode" placeholder="Например: 11-22-33" required></div></div>
+            <div class="col-md-4 col-sm-6"><div class="form-group"><label for="moduleName">Модуль *</label><select class="form-control" id="moduleName" required><option value="">Выберите модуль</option><option>Shops</option><option>Finance</option><option>Checklists</option><option>EDM</option><option>Inventory</option></select></div></div>
+            <div class="col-md-4 col-sm-12"><div class="form-group"><label for="priority">Приоритет</label><select class="form-control" id="priority"><option>Низкий</option><option selected>Средний</option><option>Высокий</option><option>Критичный</option></select></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><div class="form-group"><label for="title">Название запроса *</label><input type="text" class="form-control" id="title" placeholder="Кратко опишите задачу" required></div></div>
+            <div class="col-md-3 col-sm-6"><div class="form-group"><label for="owner">Ответственный</label><input type="text" class="form-control" id="owner" placeholder="ФИО"></div></div>
+            <div class="col-md-3 col-sm-6"><div class="form-group"><label for="deadline">Дедлайн</label><input type="date" class="form-control" id="deadline"></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12"><div class="form-group"><label for="details">Детали запроса *</label><textarea class="form-control" id="details" rows="5" placeholder="Что нужно изменить, зачем и какой ожидаемый результат?" required></textarea></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="requestFile">Вложение к заявке</label>
+                <input type="file" class="wrm-file-input" id="requestFile" accept=".pdf,.doc,.docx,.xlsx,.png,.jpg">
+              </div>
+              <div class="wrm-file-note" id="requestFile-note">Файл не выбран</div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="requestFiles">Дополнительные материалы</label>
+                <input type="file" class="wrm-file-input" id="requestFiles" multiple>
+              </div>
+              <div class="wrm-file-note" id="requestFiles-note">Файлы не выбраны</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="requestImages">Изображения к заявке (скриншоты/фото)</label>
+                <input type="file" class="wrm-file-input" id="requestImages" accept="image/*" multiple>
+              </div>
+              <div class="wrm-file-note" id="requestImages-note">Изображения не выбраны</div>
+              <div class="wrm-image-preview" id="requestImages-preview"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6"><div class="checkbox wrm-checkbox"><label><input type="checkbox" id="isBudget" checked> Требуется оценка бюджета</label></div></div>
+            <div class="col-md-3 col-sm-6"><div class="checkbox wrm-checkbox"><label><input type="checkbox" id="isRisk"> Есть риск SLA</label></div></div>
+            <div class="col-md-6 col-sm-12 wrm-actions-row">
+              <button type="button" class="btn btn-default" id="clear-btn">Очистить</button>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#previewModal" id="preview-btn">Проверить в modal</button>
+              <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Варианты полей загрузки файла</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+              <label for="exampleFileContract">Один документ (договор)</label>
+              <input type="file" class="wrm-file-input" id="exampleFileContract" accept=".pdf,.doc,.docx">
+            </div>
+            <div class="wrm-file-note" id="exampleFileContract-note">Файл не выбран</div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+              <label for="exampleFileMedia">Несколько файлов (скриншоты)</label>
+              <input type="file" class="wrm-file-input" id="exampleFileMedia" multiple accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+            <div class="wrm-file-note" id="exampleFileMedia-note">Файлы не выбраны</div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="form-group">
+              <label>Кнопка загрузки с иконкой</label>
+              <div class="wrm-file-inline">
+                <label class="btn wrm-btn-soft wrm-btn-icon-text wrm-file-trigger">
+                  <span class="glyphicon glyphicon-paperclip"></span><span>Загрузить файл</span>
+                  <input type="file" id="exampleFileButton" multiple>
+                </label>
+                <button type="button" class="btn btn-default btn-sm" id="exampleFileClear">Очистить</button>
+              </div>
+            </div>
+            <div class="wrm-file-note" id="exampleFileButton-note">Файлы не выбраны</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="exampleImageUpload">Загрузка изображений с предпросмотром</label>
+              <input type="file" class="wrm-file-input" id="exampleImageUpload" multiple accept="image/*">
+            </div>
+            <div class="wrm-file-note" id="exampleImageUpload-note">Изображения не выбраны</div>
+            <div class="wrm-image-preview wrm-image-preview-sm" id="exampleImageUpload-preview"></div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label>Загрузка изображений кнопкой</label>
+              <div class="wrm-file-inline">
+                <label class="btn wrm-btn-soft wrm-btn-icon-text wrm-file-trigger">
+                  <span class="glyphicon glyphicon-picture"></span><span>Добавить изображения</span>
+                  <input type="file" id="exampleImageButton" accept="image/*" multiple>
+                </label>
+                <button type="button" class="btn btn-default btn-sm" id="exampleImageClear">Очистить</button>
+              </div>
+            </div>
+            <div class="wrm-file-note" id="exampleImageButton-note">Изображения не выбраны</div>
+            <div class="wrm-image-preview wrm-image-preview-sm" id="exampleImageButton-preview"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Варианты кнопок</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="wrm-heading">Квадратные кнопки как в проекте</h4>
+            <div class="wrm-btn-demo">
+              <button type="button" class="btn wrm-btn-tile" title="Обновить">
+                <span class="glyphicon glyphicon-refresh"></span><span class="wrm-btn-tile-text">Обновить</span>
+              </button>
+              <button type="button" class="btn wrm-btn-tile" title="Подробно">
+                <span class="glyphicon glyphicon-edit"></span><span class="wrm-btn-tile-text">Подробно</span>
+              </button>
+              <button type="button" class="btn wrm-btn-tile" title="Сохранить">
+                <span class="glyphicon glyphicon-floppy-disk"></span><span class="wrm-btn-tile-text">Сохранить</span>
+              </button>
+              <button type="button" class="btn wrm-btn-tile" title="Удалить">
+                <span class="glyphicon glyphicon-trash"></span><span class="wrm-btn-tile-text">Удалить</span>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4 class="wrm-heading">Квадратные кнопки с выпадашкой</h4>
+            <div class="wrm-dropdown-demo">
+              <div class="btn-group">
+                <button type="button" class="btn wrm-btn-tile dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-folder-open"></span><span class="wrm-btn-tile-text">Открыть</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Открыть карточку</a></li>
+                  <li><a href="#">Клонировать запись</a></li>
+                  <li><a href="#">Пометить избранным</a></li>
+                </ul>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn wrm-btn-tile" title="Сохранить">
+                  <span class="glyphicon glyphicon-floppy-disk"></span><span class="wrm-btn-tile-text">Сохранить</span>
+                </button>
+                <button type="button" class="btn wrm-btn-tile-caret dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Сохранить и закрыть</a></li>
+                  <li><a href="#">Сохранить как черновик</a></li>
+                  <li><a href="#">Сохранить и создать новую</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Отправить на согласование</a></li>
+                </ul>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn wrm-btn-tile dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-cog"></span><span class="wrm-btn-tile-text">Действия</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Параметры формы</a></li>
+                  <li><a href="#">Шаблоны полей</a></li>
+                  <li><a href="#">Права доступа</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h4 class="wrm-heading">Плоские служебные</h4>
+            <div class="wrm-btn-demo">
+              <button type="button" class="btn wrm-btn-soft wrm-btn-icon-text">
+                <span class="glyphicon glyphicon-filter"></span><span>Фильтр</span>
+              </button>
+              <button type="button" class="btn wrm-btn-soft wrm-btn-icon-text">
+                <span class="glyphicon glyphicon-download-alt"></span><span>Выгрузка</span>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="wrm-heading">Пилюли для режимов</h4>
+            <div class="wrm-btn-demo">
+              <button type="button" class="btn btn-default wrm-btn-pill">Сегодня</button>
+              <button type="button" class="btn btn-default wrm-btn-pill">Неделя</button>
+              <button type="button" class="btn btn-default wrm-btn-pill">Месяц</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="wrm-heading">Кнопка со счетчиком</h4>
+            <div class="wrm-btn-demo">
+              <button type="button" class="btn btn-default wrm-btn-icon-text wrm-btn-counter">
+                <span class="glyphicon glyphicon-bell"></span><span>Уведомления</span><span class="badge">7</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 6/6: Bootstrap форма + модальное окно.</div>
+  </div>
+
+  <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="previewModalLabel">Проверка заявки перед отправкой</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <p><strong>Код проекта:</strong> <span id="m-projectCode">-</span></p>
+              <p><strong>Модуль:</strong> <span id="m-moduleName">-</span></p>
+              <p><strong>Приоритет:</strong> <span id="m-priority">-</span></p>
+              <p><strong>Ответственный:</strong> <span id="m-owner">-</span></p>
+            </div>
+            <div class="col-sm-6">
+              <p><strong>Дедлайн:</strong> <span id="m-deadline">-</span></p>
+              <p><strong>Оценка бюджета:</strong> <span id="m-isBudget">-</span></p>
+              <p><strong>Риск SLA:</strong> <span id="m-isRisk">-</span></p>
+            </div>
+            <div class="col-sm-12">
+              <p><strong>Название:</strong> <span id="m-title">-</span></p>
+              <p><strong>Детали:</strong> <span id="m-details">-</span></p>
+              <p><strong>Вложения:</strong> <span id="m-files">-</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Вернуться к редактированию</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Подтвердить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById("request-form");
+      var clearBtn = document.getElementById("clear-btn");
+      var previewBtn = document.getElementById("preview-btn");
+      var fileUpdater = {};
+      var imageUpdater = {};
+      var previewUrls = {};
+
+      var fileBindings = [
+        { inputId: "requestFile", noteId: "requestFile-note", emptyText: "Файл не выбран" },
+        { inputId: "requestFiles", noteId: "requestFiles-note", emptyText: "Файлы не выбраны" },
+        { inputId: "exampleFileContract", noteId: "exampleFileContract-note", emptyText: "Файл не выбран" },
+        { inputId: "exampleFileMedia", noteId: "exampleFileMedia-note", emptyText: "Файлы не выбраны" },
+        { inputId: "exampleFileButton", noteId: "exampleFileButton-note", emptyText: "Файлы не выбраны" }
+      ];
+
+      var imageBindings = [
+        { inputId: "requestImages", noteId: "requestImages-note", previewId: "requestImages-preview", emptyText: "Изображения не выбраны" },
+        { inputId: "exampleImageUpload", noteId: "exampleImageUpload-note", previewId: "exampleImageUpload-preview", emptyText: "Изображения не выбраны" },
+        { inputId: "exampleImageButton", noteId: "exampleImageButton-note", previewId: "exampleImageButton-preview", emptyText: "Изображения не выбраны" }
+      ];
+
+      function txt(id) {
+        var el = document.getElementById(id);
+        if (!el) return "-";
+        if (el.type === "checkbox") return el.checked ? "Да" : "Нет";
+        return (el.value || "").trim() || "-";
+      }
+
+      function fileText(files, emptyText) {
+        if (!files || !files.length) return emptyText;
+        if (files.length === 1) return files[0].name;
+        if (files.length === 2) return files[0].name + ", " + files[1].name;
+        return files[0].name + ", " + files[1].name + " и +" + (files.length - 2) + " файла";
+      }
+
+      function selectedFilesText(inputIds) {
+        var names = [];
+        for (var i = 0; i < inputIds.length; i += 1) {
+          var input = document.getElementById(inputIds[i]);
+          if (!input || !input.files) continue;
+          for (var j = 0; j < input.files.length; j += 1) {
+            names.push(input.files[j].name);
+          }
+        }
+        if (!names.length) return "-";
+        if (names.length === 1) return names[0];
+        if (names.length === 2) return names[0] + ", " + names[1];
+        return names[0] + ", " + names[1] + " и +" + (names.length - 2) + " файла";
+      }
+
+      function clearImagePreview(previewId) {
+        var preview = document.getElementById(previewId);
+        if (!preview) return;
+
+        var urls = previewUrls[previewId] || [];
+        for (var i = 0; i < urls.length; i += 1) {
+          URL.revokeObjectURL(urls[i]);
+        }
+        previewUrls[previewId] = [];
+        preview.innerHTML = "";
+      }
+
+      function renderImageThumbs(previewId, files) {
+        var preview = document.getElementById(previewId);
+        if (!preview) return;
+
+        clearImagePreview(previewId);
+
+        if (!files || !files.length) return;
+
+        var urls = [];
+        for (var i = 0; i < files.length; i += 1) {
+          var file = files[i];
+          if (!file.type || file.type.indexOf("image/") !== 0) continue;
+
+          var url = URL.createObjectURL(file);
+          urls.push(url);
+
+          var card = document.createElement("figure");
+          card.className = "wrm-image-thumb";
+          var image = document.createElement("img");
+          image.src = url;
+          image.alt = file.name;
+          var caption = document.createElement("figcaption");
+          caption.title = file.name;
+          caption.textContent = file.name;
+          card.appendChild(image);
+          card.appendChild(caption);
+          preview.appendChild(card);
+        }
+        previewUrls[previewId] = urls;
+      }
+
+      function bindFileNote(item) {
+        var input = document.getElementById(item.inputId);
+        var note = document.getElementById(item.noteId);
+        if (!input || !note) return;
+
+        var render = function () {
+          note.textContent = fileText(input.files, item.emptyText);
+        };
+
+        input.addEventListener("change", render);
+        render();
+        fileUpdater[item.inputId] = render;
+      }
+
+      for (var b = 0; b < fileBindings.length; b += 1) {
+        bindFileNote(fileBindings[b]);
+      }
+
+      function bindImagePreview(item) {
+        var input = document.getElementById(item.inputId);
+        var note = document.getElementById(item.noteId);
+        if (!input || !note) return;
+
+        var render = function () {
+          note.textContent = fileText(input.files, item.emptyText);
+          renderImageThumbs(item.previewId, input.files);
+        };
+
+        input.addEventListener("change", render);
+        render();
+        imageUpdater[item.inputId] = render;
+      }
+
+      for (var c = 0; c < imageBindings.length; c += 1) {
+        bindImagePreview(imageBindings[c]);
+      }
+
+      function fillModal() {
+        document.getElementById("m-projectCode").textContent = txt("projectCode");
+        document.getElementById("m-moduleName").textContent = txt("moduleName");
+        document.getElementById("m-priority").textContent = txt("priority");
+        document.getElementById("m-owner").textContent = txt("owner");
+        document.getElementById("m-deadline").textContent = txt("deadline");
+        document.getElementById("m-isBudget").textContent = txt("isBudget");
+        document.getElementById("m-isRisk").textContent = txt("isRisk");
+        document.getElementById("m-title").textContent = txt("title");
+        document.getElementById("m-details").textContent = txt("details");
+        document.getElementById("m-files").textContent = selectedFilesText(["requestFile", "requestFiles", "requestImages"]);
+      }
+
+      previewBtn.addEventListener("click", fillModal);
+      clearBtn.addEventListener("click", function () {
+        form.reset();
+        var fileKeys = Object.keys(fileUpdater);
+        for (var i = 0; i < fileKeys.length; i += 1) {
+          var input = document.getElementById(fileKeys[i]);
+          if (input) input.value = "";
+          fileUpdater[fileKeys[i]]();
+        }
+
+        var imageKeys = Object.keys(imageUpdater);
+        for (var j = 0; j < imageKeys.length; j += 1) {
+          var imageInput = document.getElementById(imageKeys[j]);
+          if (imageInput) imageInput.value = "";
+          imageUpdater[imageKeys[j]]();
+        }
+      });
+
+      var exampleFileClear = document.getElementById("exampleFileClear");
+      var exampleFileButton = document.getElementById("exampleFileButton");
+      if (exampleFileClear && exampleFileButton) {
+        exampleFileClear.addEventListener("click", function () {
+          exampleFileButton.value = "";
+          if (fileUpdater.exampleFileButton) {
+            fileUpdater.exampleFileButton();
+          }
+        });
+      }
+
+      var exampleImageClear = document.getElementById("exampleImageClear");
+      var exampleImageButton = document.getElementById("exampleImageButton");
+      if (exampleImageClear && exampleImageButton) {
+        exampleImageClear.addEventListener("click", function () {
+          exampleImageButton.value = "";
+          if (imageUpdater.exampleImageButton) {
+            imageUpdater.exampleImageButton();
+          }
+        });
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Пример: заявка отправлена.");
+      });
+    })();
+  </script>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>
+
+
+

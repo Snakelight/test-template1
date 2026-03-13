@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - Карточка проекта</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li class="active"><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Проект 11-22-33 - Автоматизация согласований поставок</h1>
+      <p><span class="label label-info">IT-проект</span> <span class="label label-warning">Этап: Разработка</span> <span class="label label-success">Готовность 64%</span></p>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-body">
+        <ul class="nav nav-tabs wrm-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#passport" aria-controls="passport" role="tab" data-toggle="tab">Паспорт проекта</a></li>
+          <li role="presentation"><a href="#budget" aria-controls="budget" role="tab" data-toggle="tab">Бюджет и этапы</a></li>
+          <li role="presentation"><a href="#team" aria-controls="team" role="tab" data-toggle="tab">Команда и риски</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="passport">
+            <table class="table wrm-kv">
+              <tr><th>Идентификатор</th><td>71</td></tr>
+              <tr><th>Заказчик</th><td>Попов Павел Андреевич</td></tr>
+              <tr><th>Инициатор</th><td>Офис цифровой трансформации</td></tr>
+              <tr><th>Цель проекта</th><td>Сократить цикл согласования поставки с 3 дней до 6 часов.</td></tr>
+              <tr><th>Описание проблемы</th><td>Ручные сверки в нескольких системах, дублирование заявок и низкая прозрачность статусов.</td></tr>
+              <tr><th>Файловое пространство</th><td>projects.tdera.ru/spaces/11-22-33</td></tr>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="budget">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="panel panel-default wrm-panel">
+                  <div class="panel-heading">Финансы</div>
+                  <table class="table wrm-kv">
+                    <tr><th>CAPEX план</th><td>12 400 000 руб.</td></tr>
+                    <tr><th>CAPEX факт</th><td>7 880 000 руб.</td></tr>
+                    <tr><th>OPEX год</th><td>2 100 000 руб.</td></tr>
+                    <tr><th>Экономический эффект</th><td>+16 500 000 руб./год</td></tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="panel panel-default wrm-panel">
+                  <div class="panel-heading">Календарь этапов</div>
+                  <div class="panel-body">
+                    <div class="timeline-item"><span class="timeline-time">01.02.2026</span> Инициация и бизнес-требования</div>
+                    <div class="timeline-item"><span class="timeline-time">21.02.2026</span> Подтверждение архитектуры</div>
+                    <div class="timeline-item"><span class="timeline-time">28.03.2026</span> Пилот в 45 магазинах</div>
+                    <div class="timeline-item"><span class="timeline-time">15.04.2026</span> Тиражирование и закрытие этапа</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="team">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="panel panel-default wrm-panel">
+                  <div class="panel-heading">Команда</div>
+                  <ul class="list-group wrm-list-group">
+                    <li class="list-group-item">Руководитель проекта <span class="pull-right">П. Попов</span></li>
+                    <li class="list-group-item">Бизнес-архитектор <span class="pull-right">Е. Лебедева</span></li>
+                    <li class="list-group-item">Техлид <span class="pull-right">М. Сергеев</span></li>
+                    <li class="list-group-item">QA lead <span class="pull-right">Н. Комарова</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="panel panel-default wrm-panel">
+                  <div class="panel-heading">Риски</div>
+                  <ul class="list-group wrm-list-group">
+                    <li class="list-group-item">Срыв интеграции с внешним API <span class="pull-right label label-danger">Высокий</span></li>
+                    <li class="list-group-item">Задержка юридического согласования <span class="pull-right label label-warning">Средний</span></li>
+                    <li class="list-group-item">Доступность среды тестирования <span class="pull-right label label-info">Низкий</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 3/6: Карточка проекта с Bootstrap Tabs.</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>
+

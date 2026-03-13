@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - Аналитика</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li class="active"><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Аналитика эффективности модулей и магазинов</h1>
+      <p>Шаблон отчета для руководства: KPI, динамика, отклонения по регионам и готовые выгрузки.</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Выручка, неделя</div><div class="metric-value">+8.4%</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Снижение потерь</div><div class="metric-value">-1.7%</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Соблюдение SLA</div><div class="metric-value">94.2%</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Проблемные точки</div><div class="metric-value">23</div></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default wrm-panel">
+          <div class="panel-heading">Динамика модулей</div>
+          <div class="panel-body">
+            <p class="wrm-progress-title">Shops <span class="pull-right">84%</span></p><div class="progress"><div class="progress-bar progress-bar-info" style="width:84%"></div></div>
+            <p class="wrm-progress-title">Finance <span class="pull-right">73%</span></p><div class="progress"><div class="progress-bar progress-bar-success" style="width:73%"></div></div>
+            <p class="wrm-progress-title">Checklists <span class="pull-right">91%</span></p><div class="progress"><div class="progress-bar progress-bar-primary" style="width:91%"></div></div>
+            <p class="wrm-progress-title">EDM <span class="pull-right">67%</span></p><div class="progress"><div class="progress-bar progress-bar-warning" style="width:67%"></div></div>
+            <p class="wrm-progress-title">Inventory <span class="pull-right">79%</span></p><div class="progress"><div class="progress-bar progress-bar-info" style="width:79%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default wrm-panel">
+          <div class="panel-heading">Тепловая зона по регионам</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Северо-Запад</h5><p>Стабильно, 2 инцидента.</p></div></div>
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Центр</h5><p>Высокая нагрузка, 7 инцидентов.</p></div></div>
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Юг</h5><p>Норма, 1 инцидент.</p></div></div>
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Поволжье</h5><p>Просадка SLA на 4.2%.</p></div></div>
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Урал</h5><p>Норма, рост скорости обработки.</p></div></div>
+              <div class="col-sm-6"><div class="wrm-heat"><h5>Сибирь</h5><p>Требуется ревизия 5 магазинов.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Готовые выгрузки и отчеты</div>
+      <div class="panel-body">
+        <div class="table-responsive wrm-table-wrap">
+          <table class="table wrm-action-table">
+            <tbody>
+              <tr>
+                <td>Отчет по SLA (день/неделя/месяц)</td>
+                <td><button class="btn btn-default btn-sm">Скачать PDF</button></td>
+              </tr>
+              <tr>
+                <td>Свод по инцидентам и причинам</td>
+                <td><button class="btn btn-default btn-sm">Скачать XLSX</button></td>
+              </tr>
+              <tr>
+                <td>Сравнение макрорегионов</td>
+                <td><button class="btn btn-default btn-sm">Открыть в BI</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 4/6: Аналитика и отчетность на Bootstrap.</div>
+  </div>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>
+

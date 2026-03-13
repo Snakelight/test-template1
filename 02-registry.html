@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - Реестр задач</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li class="active"><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Реестр задач и инцидентов</h1>
+      <p>Плотный рабочий экран: фильтры, статусы, сроки, ответственные и быстрые массовые действия.</p>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Фильтры и действия</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2 col-sm-4"><select class="form-control"><option>Модуль: Все</option><option>Shops</option><option>Finance</option><option>Checklists</option></select></div>
+          <div class="col-md-2 col-sm-4"><select class="form-control"><option>Статус: Все</option><option>Новая</option><option>В работе</option><option>На согласовании</option></select></div>
+          <div class="col-md-2 col-sm-4"><input class="form-control" type="text" placeholder="Ответственный"></div>
+          <div class="col-md-2 col-sm-4"><input class="form-control" type="date"></div>
+          <div class="col-md-2 col-sm-4"><button class="btn btn-primary btn-block">Применить</button></div>
+          <div class="col-md-2 col-sm-4"><button class="btn btn-default btn-block">Экспорт XLSX</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Всего записей</div><div class="metric-value">1 284</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">В работе</div><div class="metric-value">326</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Просрочено</div><div class="metric-value">41</div></div></div></div>
+      <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Без ответственного</div><div class="metric-value">7</div></div></div></div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-body">
+        <div class="table-responsive wrm-table-wrap">
+          <table class="table table-striped table-hover wrm-table registry-table">
+            <colgroup>
+              <col style="width:90px">
+              <col style="width:110px">
+              <col style="width:520px">
+              <col style="width:130px">
+              <col style="width:130px">
+              <col style="width:170px">
+              <col style="width:170px">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Модуль</th>
+                <th>Задача</th>
+                <th>Приоритет</th>
+                <th>Статус</th>
+                <th>Дедлайн</th>
+                <th>Ответственный</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>#83412</td><td>Shops</td><td>Сверка расхождения поставки по 17 магазинам</td><td><span class="label label-danger">Высокий</span></td><td><span class="label label-warning">В работе</span></td><td>13.03.2026 18:00</td><td>Марина Орлова</td></tr>
+              <tr><td>#83408</td><td>Finance</td><td>Пересчет CAPEX по проекту 11-22-33</td><td><span class="label label-info">Средний</span></td><td><span class="label label-primary">Согласование</span></td><td>14.03.2026 11:30</td><td>Павел Попов</td></tr>
+              <tr><td>#83397</td><td>EDM</td><td>Подписание акта поставки по макрорегиону Сибирь</td><td><span class="label label-default">Низкий</span></td><td><span class="label label-success">Закрыта</span></td><td>12.03.2026 16:20</td><td>Анна Соколова</td></tr>
+              <tr><td>#83390</td><td>Checklists</td><td>Ревизия чек-листа "Приемка товара"</td><td><span class="label label-warning">Высокий</span></td><td><span class="label label-danger">Просрочена</span></td><td>11.03.2026 09:00</td><td>Илья Тарасов</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 2/6: Реестровая страница на Bootstrap.</div>
+  </div>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>
+
