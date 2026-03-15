@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebRM Core - Аналитика</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./bootstrap-codex.css">
 </head>
 <body class="wrm-body">
@@ -20,7 +21,9 @@
         <li class="active"><a href="./04-analytics.html">Аналитика</a></li>
         <li><a href="./05-workflow.html">Задачи</a></li>
         <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
         <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
       </ul>
     </div>
   </nav>
@@ -31,14 +34,14 @@
       <p>Шаблон отчета для руководства: KPI, динамика, отклонения по регионам и готовые выгрузки.</p>
     </div>
 
-    <div class="row">
+    <div class="row wrm-wrap-gap-2 wrm-stack-gap">
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Выручка, неделя</div><div class="metric-value">+8.4%</div></div></div></div>
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Снижение потерь</div><div class="metric-value">-1.7%</div></div></div></div>
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Соблюдение SLA</div><div class="metric-value">94.2%</div></div></div></div>
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Проблемные точки</div><div class="metric-value">23</div></div></div></div>
     </div>
 
-    <div class="row">
+    <div class="row wrm-stack-gap-md">
       <div class="col-md-6">
         <div class="panel panel-default wrm-panel">
           <div class="panel-heading">Динамика модулей</div>
@@ -55,7 +58,7 @@
         <div class="panel panel-default wrm-panel">
           <div class="panel-heading">Тепловая зона по регионам</div>
           <div class="panel-body">
-            <div class="row">
+            <div class="row wrm-wrap-gap-2 wrm-stack-gap wrm-eq-gap-2">
               <div class="col-sm-6"><div class="wrm-heat"><h5>Северо-Запад</h5><p>Стабильно, 2 инцидента.</p></div></div>
               <div class="col-sm-6"><div class="wrm-heat"><h5>Центр</h5><p>Высокая нагрузка, 7 инцидентов.</p></div></div>
               <div class="col-sm-6"><div class="wrm-heat"><h5>Юг</h5><p>Норма, 1 инцидент.</p></div></div>
@@ -97,4 +100,8 @@
   <script src="./sidebar-codex.js"></script>
 </body>
 </html>
+
+
+
+
 

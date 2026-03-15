@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebRM Core - Карточка проекта</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./bootstrap-codex.css">
 </head>
 <body class="wrm-body">
@@ -20,7 +21,9 @@
         <li><a href="./04-analytics.html">Аналитика</a></li>
         <li><a href="./05-workflow.html">Задачи</a></li>
         <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
         <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
       </ul>
     </div>
   </nav>
@@ -34,13 +37,13 @@
     <div class="panel panel-default wrm-panel">
       <div class="panel-body">
         <ul class="nav nav-tabs wrm-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#passport" aria-controls="passport" role="tab" data-toggle="tab">Паспорт проекта</a></li>
-          <li role="presentation"><a href="#budget" aria-controls="budget" role="tab" data-toggle="tab">Бюджет и этапы</a></li>
-          <li role="presentation"><a href="#team" aria-controls="team" role="tab" data-toggle="tab">Команда и риски</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link active" href="#passport" aria-controls="passport" role="tab" data-bs-toggle="tab">Паспорт проекта</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="#budget" aria-controls="budget" role="tab" data-bs-toggle="tab">Бюджет и этапы</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="#team" aria-controls="team" role="tab" data-bs-toggle="tab">Команда и риски</a></li>
         </ul>
 
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="passport">
+        <div class="tab-content wrm-tab-content">
+          <div role="tabpanel" class="tab-pane show active" id="passport">
             <table class="table wrm-kv">
               <tr><th>Идентификатор</th><td>71</td></tr>
               <tr><th>Заказчик</th><td>Попов Павел Андреевич</td></tr>
@@ -51,7 +54,7 @@
             </table>
           </div>
           <div role="tabpanel" class="tab-pane" id="budget">
-            <div class="row">
+            <div class="row wrm-stack-gap-md wrm-eq-col-panels">
               <div class="col-md-6">
                 <div class="panel panel-default wrm-panel">
                   <div class="panel-heading">Финансы</div>
@@ -66,7 +69,7 @@
               <div class="col-md-6">
                 <div class="panel panel-default wrm-panel">
                   <div class="panel-heading">Календарь этапов</div>
-                  <div class="panel-body">
+                  <div class="panel-body wrm-timeline-list">
                     <div class="timeline-item"><span class="timeline-time">01.02.2026</span> Инициация и бизнес-требования</div>
                     <div class="timeline-item"><span class="timeline-time">21.02.2026</span> Подтверждение архитектуры</div>
                     <div class="timeline-item"><span class="timeline-time">28.03.2026</span> Пилот в 45 магазинах</div>
@@ -77,7 +80,7 @@
             </div>
           </div>
           <div role="tabpanel" class="tab-pane" id="team">
-            <div class="row">
+            <div class="row wrm-stack-gap-md wrm-eq-col-panels">
               <div class="col-md-6">
                 <div class="panel panel-default wrm-panel">
                   <div class="panel-heading">Команда</div>
@@ -108,9 +111,12 @@
     <div class="wrm-footer-note">Шаблон 3/6: Карточка проекта с Bootstrap Tabs.</div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./sidebar-codex.js"></script>
 </body>
 </html>
+
+
+
+
 

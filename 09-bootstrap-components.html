@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - Bootstrap 5 UI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+  <style>
+    .wrm-bs-swatch { border: 1px solid rgba(0,0,0,.08); border-radius: 8px; padding: 10px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; min-height: 44px; }
+    .wrm-bs-helper-box { border: 1px dashed #9db7cb; border-radius: 6px; padding: 8px; background: rgba(255,255,255,.55); }
+    .wrm-bs-code { font-family: Consolas, "Courier New", monospace; font-size: 12px; }
+    .wrm-bs-scrollspy { position: relative; height: 220px; overflow: auto; border: 1px solid #c7d8e6; border-radius: 8px; padding: 10px; background: rgba(255,255,255,.6); }
+    .wrm-bs-scrollspy h5 { margin-top: 14px; }
+    .vr { opacity: .22; }
+  </style>
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li class="active"><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Bootstrap 5 UI Kit: максимальное покрытие для CRM-демо</h1>
+      <p>Один экран-справочник по большинству возможностей Bootstrap 5: layout, content, forms, components, utilities, helpers и JS-компоненты.</p>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Layout: container, grid, columns</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-8 col-sm-12">
+            <h4 class="wrm-heading">Responsive grid + ordering</h4>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-2">
+              <div class="col"><div class="wrm-bs-helper-box text-center">col 1</div></div>
+              <div class="col order-lg-4"><div class="wrm-bs-helper-box text-center">col 2 (order-lg-4)</div></div>
+              <div class="col"><div class="wrm-bs-helper-box text-center">col 3</div></div>
+              <div class="col"><div class="wrm-bs-helper-box text-center">col 4</div></div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-md-3"><div class="wrm-bs-helper-box">.col-md-3</div></div>
+              <div class="col-md-9"><div class="wrm-bs-helper-box">.col-md-9</div></div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <h4 class="wrm-heading">Gutters / offsets</h4>
+            <div class="row g-3">
+              <div class="col-6"><div class="wrm-bs-helper-box">g-3</div></div>
+              <div class="col-6"><div class="wrm-bs-helper-box">g-3</div></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-6 offset-3"><div class="wrm-bs-helper-box text-center">offset-3</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Content: typography, images, code</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-6 col-sm-12">
+            <h1 class="mb-1">H1 Заголовок</h1>
+            <h2 class="mb-1">H2 Заголовок</h2>
+            <h3 class="mb-1">H3 Заголовок</h3>
+            <p class="lead">Lead-параграф для выделенного пояснения в карточке или дашборде.</p>
+            <p>Текст с <mark>mark</mark>, <strong>strong</strong>, <em>emphasis</em>, <small>small</small>, <del>del</del> и <u>underline</u>.</p>
+            <blockquote class="blockquote mb-0">
+              <p>Отчетность должна быть читаемой и предсказуемой.</p>
+              <footer class="blockquote-footer">Руководитель CRM</footer>
+            </blockquote>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <figure class="figure w-100">
+              <img alt="crm figure" class="figure-img img-fluid rounded border" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 920 320'%3E%3Crect width='920' height='320' fill='%23d4e7f3'/%3E%3Crect x='24' y='30' width='870' height='56' rx='10' fill='%232f6178'/%3E%3Crect x='24' y='102' width='280' height='190' rx='10' fill='%239fc2d7'/%3E%3Crect x='320' y='102' width='280' height='190' rx='10' fill='%23b4d1e3'/%3E%3Crect x='616' y='102' width='278' height='190' rx='10' fill='%23c3dceb'/%3E%3Ctext x='44' y='66' font-family='Arial' font-size='26' fill='white'%3ECrm%20Dashboard%20Preview%3C/text%3E%3C/svg%3E">
+              <figcaption class="figure-caption">Figure + responsive image + rounded/border.</figcaption>
+            </figure>
+            <pre class="wrm-bs-code mb-0"><code>&lt;div class="row row-cols-1 row-cols-md-3 g-2"&gt;...&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Colors, borders, shadows, utilities</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row g-2">
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-primary text-white"><span>bg-primary</span><span>text-white</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-secondary text-white"><span>bg-secondary</span><span>text-white</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-success text-white"><span>bg-success</span><span>text-white</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-danger text-white"><span>bg-danger</span><span>text-white</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-warning text-dark"><span>bg-warning</span><span>text-dark</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="wrm-bs-swatch bg-info text-dark"><span>bg-info</span><span>text-dark</span></div></div>
+        </div>
+        <div class="row wrm-stack-gap-md mt-1">
+          <div class="col-lg-4 col-sm-12"><div class="p-2 border border-primary rounded-3">Borders: <code>border border-primary rounded-3</code></div></div>
+          <div class="col-lg-4 col-sm-12"><div class="p-2 shadow-sm">Shadow sm</div></div>
+          <div class="col-lg-4 col-sm-12"><div class="p-2 shadow">Shadow default</div></div>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2 mt-1">
+          <span class="badge text-bg-primary">d-flex</span>
+          <span class="badge text-bg-secondary">gap-2</span>
+          <span class="badge text-bg-success">align-items-center</span>
+          <div class="vr"></div>
+          <span class="text-uppercase fw-semibold">text utilities</span>
+          <span class="text-muted">muted</span>
+          <span class="text-decoration-underline">underline</span>
+          <span class="text-nowrap">nowrap</span>
+          <span class="text-break">оченьдлинноесловобездополнительныхпробеловдлядемонстрацииtext-break</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Navigation: tabs, pills, breadcrumb, pagination, list group, scrollspy</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-7 col-sm-12">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nt1" type="button">Tab 1</button></li>
+              <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#nt2" type="button">Tab 2</button></li>
+              <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#nt3" type="button">Tab 3</button></li>
+            </ul>
+            <div class="tab-content wrm-tab-content">
+              <div class="tab-pane show active" id="nt1">Контент первой вкладки.</div>
+              <div class="tab-pane" id="nt2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#">Сегодня</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Неделя</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Месяц</a></li>
+                </ul>
+              </div>
+              <div class="tab-pane" id="nt3">Пример nav/tab + pills.</div>
+            </div>
+
+            <nav aria-label="breadcrumb" class="mt-2">
+              <ol class="breadcrumb mb-2">
+                <li class="breadcrumb-item"><a href="#">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">CRM</a></li>
+                <li class="breadcrumb-item active" aria-current="page">UI</li>
+              </ol>
+            </nav>
+            <ul class="pagination mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-5 col-sm-12">
+            <div class="row g-2">
+              <div class="col-5">
+                <nav id="spyNav" class="nav nav-pills flex-column">
+                  <a class="nav-link active" href="#spy-a">Раздел A</a>
+                  <a class="nav-link" href="#spy-b">Раздел B</a>
+                  <a class="nav-link" href="#spy-c">Раздел C</a>
+                </nav>
+              </div>
+              <div class="col-7">
+                <div id="spyScroll" class="wrm-bs-scrollspy" data-bs-spy="scroll" data-bs-target="#spyNav" data-bs-smooth-scroll="true" tabindex="0">
+                  <h5 id="spy-a">Раздел A</h5>
+                  <p>Scrollspy отслеживает прокрутку и подсвечивает пункт в nav.</p>
+                  <p>Актуально для длинных справочников и регламентов.</p>
+                  <h5 id="spy-b">Раздел B</h5>
+                  <p>Используется в help-страницах и руководствах пользователя.</p>
+                  <p>Поддерживается через data API и JS API.</p>
+                  <h5 id="spy-c">Раздел C</h5>
+                  <p>Работает внутри контейнера с фиксированной высотой и overflow.</p>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group mt-2">
+              <li class="list-group-item d-flex justify-content-between align-items-center">Новые задачи <span class="badge text-bg-primary rounded-pill">14</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">Критичные инциденты <span class="badge text-bg-danger rounded-pill">3</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel wrm-panel-overflow-visible">
+      <div class="panel-heading">Buttons: variants, group, split, toggle, dropdown</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Button variants + outlines</h4>
+            <div class="wrm-btn-demo">
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-secondary">Secondary</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-info">Info</button>
+              <button type="button" class="btn btn-light">Light</button>
+              <button type="button" class="btn btn-dark">Dark</button>
+              <button type="button" class="btn btn-link">Link</button>
+            </div>
+            <div class="wrm-btn-demo mt-2">
+              <button type="button" class="btn btn-outline-primary">Outline</button>
+              <button type="button" class="btn btn-outline-secondary">Outline</button>
+              <button type="button" class="btn btn-outline-success">Outline</button>
+              <button type="button" class="btn btn-outline-danger">Outline</button>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Group + split dropdown + sizes</h4>
+            <div class="btn-toolbar gap-2 mb-2" role="toolbar">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">Левая</button>
+                <button type="button" class="btn btn-default">Средняя</button>
+                <button type="button" class="btn btn-default">Правая</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary">Действие</button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Создать</a></li>
+                  <li><a class="dropdown-item" href="#">Клонировать</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Удалить</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex align-items-center flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-default">Small</button>
+              <button type="button" class="btn btn-default">Default</button>
+              <button type="button" class="btn btn-lg btn-default">Large</button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="button">Toggle button</button>
+              <button type="button" class="btn btn-primary" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Forms: controls, checks, floating labels, files, validation</div>
+      <div class="panel-body wrm-stack-rows">
+        <form class="needs-validation" novalidate>
+          <div class="row wrm-stack-gap-md">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fText">Text</label>
+              <input id="fText" class="form-control" type="text" placeholder="Введите значение" required>
+              <div class="invalid-feedback">Обязательное поле.</div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fEmail">Email</label>
+              <input id="fEmail" class="form-control" type="email" placeholder="name@company.ru" required>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fPassword">Password</label>
+              <input id="fPassword" class="form-control" type="password" placeholder="••••••••">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fTel">Tel</label>
+              <input id="fTel" class="form-control" type="tel" placeholder="+7 (___) ___-__-__">
+            </div>
+          </div>
+
+          <div class="row wrm-stack-gap-md">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fSelect">Select</label>
+              <select id="fSelect" class="form-control" required>
+                <option value="">Выберите модуль</option>
+                <option>Shops</option>
+                <option>Finance</option>
+                <option>EDM</option>
+              </select>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fDatalist">Datalist</label>
+              <input id="fDatalist" class="form-control" list="listStores" placeholder="Выберите магазин">
+              <datalist id="listStores">
+                <option value="Магазин 001"></option>
+                <option value="Магазин 014"></option>
+                <option value="Магазин 075"></option>
+              </datalist>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fDate">Date</label>
+              <input id="fDate" class="form-control" type="date">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <label class="form-label" for="fTime">Time</label>
+              <input id="fTime" class="form-control" type="time">
+            </div>
+          </div>
+          <div class="row wrm-stack-gap-md">
+            <div class="col-lg-6 col-sm-12">
+              <label class="form-label" for="fInputGroup">Input group</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input id="fInputGroup" type="text" class="form-control" placeholder="Поиск по реестру">
+                <button class="btn btn-default" type="button">Найти</button>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <label class="form-label" for="fRange">Range</label>
+              <input type="range" class="form-range" id="fRange" min="0" max="100" value="64">
+              <div class="form-text">Используйте для SLA/прогресса.</div>
+            </div>
+          </div>
+
+          <div class="row wrm-stack-gap-md">
+            <div class="col-lg-4 col-sm-12">
+              <label class="form-label">Checks / radios</label>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="fCheck1" checked><label class="form-check-label" for="fCheck1">Требуется CAPEX</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="fCheck2"><label class="form-check-label" for="fCheck2">Есть риск SLA</label></div>
+              <div class="form-check mt-1"><input class="form-check-input" type="radio" name="fRadio" id="fRadio1" checked><label class="form-check-label" for="fRadio1">Основной режим</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="fRadio" id="fRadio2"><label class="form-check-label" for="fRadio2">Пилотный режим</label></div>
+              <div class="form-check form-switch mt-1"><input class="form-check-input" type="checkbox" role="switch" id="fSwitch1" checked><label class="form-check-label" for="fSwitch1">Включить уведомления</label></div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <label class="form-label" for="fTextarea">Textarea</label>
+              <textarea id="fTextarea" class="form-control" rows="6" placeholder="Описание задачи"></textarea>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Floating label input</label>
+              </div>
+              <div class="form-floating mb-2">
+                <textarea class="form-control" placeholder="Комментарий" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">Floating label textarea</label>
+              </div>
+              <input class="form-control form-control-sm mb-2" type="text" placeholder="form-control-sm">
+              <input class="form-control mb-2" type="text" placeholder="form-control">
+              <input class="form-control form-control-lg" type="text" placeholder="form-control-lg">
+            </div>
+          </div>
+
+          <div class="row wrm-stack-gap-md">
+            <div class="col-lg-4 col-sm-12">
+              <label class="form-label" for="fileDefault">Default file input</label>
+              <input class="form-control" type="file" id="fileDefault">
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <label class="form-label" for="fileMulti">Multiple file input</label>
+              <input class="form-control" type="file" id="fileMulti" multiple>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <label class="form-label" for="fileDisabled">Disabled file input</label>
+              <input class="form-control" type="file" id="fileDisabled" disabled>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 mt-1">
+            <button class="btn btn-primary" type="submit">Проверить validation</button>
+            <button class="btn btn-default" type="reset">Сброс</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Data display: tables, cards, list groups, accordion</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-7 col-sm-12">
+            <div class="table-responsive wrm-table-wrap">
+              <table class="table table-striped table-hover table-sm align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Модуль</th>
+                    <th>Статус</th>
+                    <th>Приоритет</th>
+                    <th>Действие</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>83412</td><td>Shops</td><td><span class="badge text-bg-primary">В работе</span></td><td>Высокий</td><td><button class="btn btn-sm btn-default">Открыть</button></td></tr>
+                  <tr><td>83408</td><td>Finance</td><td><span class="badge text-bg-warning">Согласование</span></td><td>Средний</td><td><button class="btn btn-sm btn-default">Открыть</button></td></tr>
+                  <tr><td>83397</td><td>EDM</td><td><span class="badge text-bg-success">Закрыта</span></td><td>Низкий</td><td><button class="btn btn-sm btn-default">Открыть</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-lg-5 col-sm-12">
+            <div class="accordion" id="accDemo">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="accH1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc1">Accordion #1</button></h2>
+                <div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#accDemo"><div class="accordion-body">Первый блок с раскрытием контента.</div></div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="accH2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2">Accordion #2</button></h2>
+                <div id="acc2" class="accordion-collapse collapse" data-bs-parent="#accDemo"><div class="accordion-body">Второй блок с раскрытием контента.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-4 col-sm-12">
+            <div class="card">
+              <img alt="card image" class="card-img-top" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 240'%3E%3Crect width='640' height='240' fill='%23d9eaf4'/%3E%3Crect x='24' y='24' width='592' height='56' rx='10' fill='%232f6178'/%3E%3Crect x='24' y='96' width='284' height='120' rx='10' fill='%23a7c6d9'/%3E%3Crect x='332' y='96' width='284' height='120' rx='10' fill='%23b7d7e8'/%3E%3Ctext x='44' y='58' font-family='Arial' font-size='24' fill='white'%3ECRM%20Card%20Preview%3C/text%3E%3C/svg%3E">
+              <div class="card-body">
+                <h5 class="card-title">Card component</h5>
+                <p class="card-text">Базовая карточка с кнопкой действия.</p>
+                <a href="#" class="btn btn-primary">Открыть</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <ul class="list-group list-group-numbered">
+              <li class="list-group-item d-flex justify-content-between align-items-start"><div class="ms-2 me-auto"><div class="fw-semibold">Подготовить пакет</div>Сверить подписи</div><span class="badge text-bg-primary rounded-pill">2</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-start"><div class="ms-2 me-auto"><div class="fw-semibold">Подтвердить SLA</div>Внести комментарий</div><span class="badge text-bg-warning rounded-pill">1</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="carousel slide" id="miniCarousel" data-bs-ride="carousel">
+              <div class="carousel-inner rounded-3 overflow-hidden border">
+                <div class="carousel-item active"><img class="d-block w-100" alt="slide 1" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 280'%3E%3Crect width='900' height='280' fill='%232f6178'/%3E%3Ctext x='370' y='150' font-family='Arial' font-size='58' fill='white'%3ESlide%201%3C/text%3E%3C/svg%3E"></div>
+                <div class="carousel-item"><img class="d-block w-100" alt="slide 2" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 280'%3E%3Crect width='900' height='280' fill='%233f7fba'/%3E%3Ctext x='370' y='150' font-family='Arial' font-size='58' fill='white'%3ESlide%202%3C/text%3E%3C/svg%3E"></div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#miniCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+              <button class="carousel-control-next" type="button" data-bs-target="#miniCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Feedback: alerts, badges, progress, spinners, placeholders</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">Обновление данных выполнено успешно.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+        <div class="alert alert-warning" role="alert">Требуется проверка SLA до 18:00.</div>
+        <div class="alert alert-danger" role="alert">3 документа в очереди печати с риском просрочки.</div>
+
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Progress bars</h4>
+            <div class="progress mb-2"><div class="progress-bar" style="width: 25%">25%</div></div>
+            <div class="progress mb-2"><div class="progress-bar bg-success" style="width: 50%">50%</div></div>
+            <div class="progress mb-2"><div class="progress-bar bg-warning" style="width: 75%">75%</div></div>
+            <div class="progress"><div class="progress-bar bg-info" style="width: 35%"></div><div class="progress-bar bg-success" style="width: 30%"></div><div class="progress-bar bg-warning" style="width: 20%"></div></div>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Spinners + placeholders</h4>
+            <div class="d-flex align-items-center flex-wrap gap-3 mb-2">
+              <div class="spinner-border text-primary" role="status"></div>
+              <div class="spinner-border spinner-border-sm text-secondary" role="status"></div>
+              <div class="spinner-grow text-info" role="status"></div>
+              <div class="spinner-grow spinner-grow-sm text-success" role="status"></div>
+            </div>
+            <p class="placeholder-glow mb-1"><span class="placeholder col-12"></span></p>
+            <p class="placeholder-wave mb-0"><span class="placeholder col-8"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">JS components: dropdown, collapse, tooltip, popover, modal, offcanvas, toast, carousel</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Interactive controls</h4>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo">Collapse</button>
+              <button class="btn btn-default" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Подсказка Bootstrap 5">Tooltip</button>
+              <button class="btn btn-default" type="button" data-bs-toggle="popover" data-bs-title="Popover" data-bs-content="Popover в CRM-стиле.">Popover</button>
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#demoModal">Modal</button>
+              <button class="btn btn-default" type="button" data-bs-toggle="offcanvas" data-bs-target="#demoOffcanvas">Offcanvas</button>
+              <button class="btn btn-default" type="button" id="showToastBtn">Toast</button>
+            </div>
+            <div class="collapse" id="collapseDemo"><div class="card card-body">Контент внутри компонента <code>collapse</code>.</div></div>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <h4 class="wrm-heading">Close button, ratio, stacks, stretched-link</h4>
+            <button type="button" class="btn-close me-2" aria-label="Close"></button>
+            <div class="d-inline-flex p-2 border rounded align-items-center gap-2">
+              <div>hstack</div><div class="vr"></div><div>with .vr</div><div class="vr"></div><button class="btn btn-sm btn-default">Action</button>
+            </div>
+            <div class="ratio ratio-21x9 border rounded mt-2"><div class="d-flex align-items-center justify-content-center text-muted">Ratio 21x9</div></div>
+            <div class="position-relative border rounded p-2 mt-2"><strong>stretched-link demo</strong><p class="mb-0 text-muted">Клик по блоку активирует ссылку.</p><a href="#" class="stretched-link" aria-label="stretched link"></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Helpers and misc</div>
+      <div class="panel-body wrm-stack-rows">
+        <div class="row wrm-stack-gap-md">
+          <div class="col-lg-4 col-sm-12"><div class="clearfix border rounded p-2"><button class="btn btn-sm btn-default float-start">float-start</button><button class="btn btn-sm btn-default float-end">float-end</button></div></div>
+          <div class="col-lg-4 col-sm-12"><div class="border rounded p-2 text-truncate" style="max-width: 100%;">text-truncate: оченьдлинныйтексткоторыйобрежетсявконцеврамкахблока</div></div>
+          <div class="col-lg-4 col-sm-12"><div class="border rounded p-2"><span class="visually-hidden">Скрытый для экрана, видимый для скринридера</span><span>visually-hidden (скрытый текст присутствует)</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 9/9: максимально полный каталог возможностей Bootstrap 5 для CRM-демо.</div>
+  </div>
+
+  <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Подтверждение действия</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body"><p class="mb-1">Это демонстрационный modal-компонент Bootstrap 5.</p><ul class="mb-0"><li>Поддерживает размеры dialog.</li><li>Поддерживает centered / scrollable.</li><li>Управляется через data API и JS API.</li></ul></div>
+        <div class="modal-footer"><button type="button" class="btn btn-default" data-bs-dismiss="modal">Закрыть</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Подтвердить</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="demoOffcanvas" aria-labelledby="demoOffcanvasLabel">
+    <div class="offcanvas-header"><h5 id="demoOffcanvasLabel" class="offcanvas-title">Быстрая панель</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+    <div class="offcanvas-body"><p>Offcanvas-меню для быстрых действий и фильтров.</p><div class="list-group"><a class="list-group-item list-group-item-action" href="#">Фильтр по модулю</a><a class="list-group-item list-group-item-action" href="#">Фильтр по ответственному</a><a class="list-group-item list-group-item-action" href="#">Фильтр по SLA</a></div></div>
+  </div>
+
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 1090">
+    <div id="demoToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header"><i class="bi bi-check2-circle text-success me-2"></i><strong class="me-auto">WebRM Core</strong><small>сейчас</small><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div>
+      <div class="toast-body">Toast-компонент Bootstrap 5 работает корректно.</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      var tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      for (var i = 0; i < tooltips.length; i++) new bootstrap.Tooltip(tooltips[i]);
+
+      var popovers = document.querySelectorAll('[data-bs-toggle="popover"]');
+      for (var j = 0; j < popovers.length; j++) new bootstrap.Popover(popovers[j]);
+
+      var toastEl = document.getElementById("demoToast");
+      var toast = toastEl ? new bootstrap.Toast(toastEl, { delay: 3000 }) : null;
+      var toastBtn = document.getElementById("showToastBtn");
+      if (toast && toastBtn) toastBtn.addEventListener("click", function () { toast.show(); });
+
+      var forms = document.querySelectorAll(".needs-validation");
+      for (var k = 0; k < forms.length; k++) {
+        forms[k].addEventListener("submit", function (event) {
+          if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          this.classList.add("was-validated");
+        }, false);
+      }
+
+      var spyElement = document.getElementById("spyScroll");
+      if (spyElement) {
+        new bootstrap.ScrollSpy(spyElement, { target: "#spyNav", smoothScroll: true });
+      }
+    })();
+  </script>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>

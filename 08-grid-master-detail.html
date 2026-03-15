@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRM Core - AG Grid + DX Grid</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-theme-alpine.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-theme-alpine-dark.css">
+  <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.light.css">
+  <link rel="stylesheet" href="./bootstrap-codex.css">
+</head>
+<body class="wrm-body">
+  <nav class="navbar navbar-default wrm-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./01-dashboard.html">WebRM Core</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="./01-dashboard.html">Дашборд</a></li>
+        <li><a href="./02-registry.html">Реестр</a></li>
+        <li><a href="./03-project-card.html">Карточка проекта</a></li>
+        <li><a href="./04-analytics.html">Аналитика</a></li>
+        <li><a href="./05-workflow.html">Задачи</a></li>
+        <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li class="active"><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
+        <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid wrm-container">
+    <div class="wrm-jumbotron">
+      <h1>Единый реестр задач: AG Grid + детализация в DX Grid</h1>
+      <p>Сверху быстрый реестр задач на AG Grid, снизу детальная история и шаги по выбранной строке на DevExtreme dxDataGrid.</p>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">Фильтры и действия сверху (муляж)</div>
+      <div class="panel-body">
+        <div class="wrm-grid-filterbar">
+          <div class="wrm-grid-filter-refresh">
+            <button type="button" class="btn btn-primary wrm-grid-refresh-btn" id="wrmRefreshGridsBtn" title="Обновить данные гридов" aria-label="Обновить данные гридов">
+              <span class="bi bi-arrow-clockwise"></span>
+            </button>
+          </div>
+          <div class="wrm-grid-filter-store">
+            <div class="form-group">
+              <label for="wrmStoreSelect">Номер магазина</label>
+              <select class="form-control" id="wrmStoreSelect">
+                <option value="">Не выбрано</option>
+                <option>№101 - Центр</option>
+                <option>№118 - Север</option>
+                <option>№127 - Юг</option>
+                <option>№133 - Запад</option>
+                <option>№146 - Восток</option>
+                <option>№152 - Урал</option>
+              </select>
+            </div>
+          </div>
+          <div class="wrm-grid-filter-range">
+            <div class="form-group">
+              <label for="wrmDateRange">Диапазон дат</label>
+              <div id="wrmDateRange" class="wrm-range-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">AG Grid: реестр задач (master)</div>
+      <div class="panel-body">
+        <div id="wrmAgGrid" class="ag-theme-alpine wrm-ag-grid"></div>
+      </div>
+    </div>
+
+    <div class="panel panel-default wrm-panel">
+      <div class="panel-heading">DX Grid: детализация выбранной строки</div>
+      <div class="panel-body">
+        <div class="wrm-detail-caption" id="wrmDetailCaption">Выберите строку в верхней таблице для просмотра деталей.</div>
+        <div id="wrmDxDetailGrid" class="wrm-dx-grid"></div>
+      </div>
+    </div>
+
+    <div class="wrm-footer-note">Шаблон 8/8: AG Grid + DevExtreme детализация в едином стиле.</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/dist/ag-grid-community.min.js"></script>
+  <script src="https://cdn3.devexpress.com/jslib/23.2.6/js/dx.all.js"></script>
+  <script src="https://cdn3.devexpress.com/jslib/23.2.6/js/localization/dx.messages.ru.js"></script>
+  <script>
+    (function () {
+      if (window.DevExpress && DevExpress.localization && typeof DevExpress.localization.locale === "function") {
+        DevExpress.localization.locale("ru");
+      }
+
+      var masterRows = [
+        { taskId: 83412, module: "Shops", project: "11-22-33", status: "В работе", priority: "Высокий", owner: "Марина Орлова", updated: "13.03.2026 09:15" },
+        { taskId: 83408, module: "Finance", project: "11-22-33", status: "Согласование", priority: "Средний", owner: "Павел Попов", updated: "13.03.2026 10:02" },
+        { taskId: 83397, module: "EDM", project: "44-19-07", status: "Закрыта", priority: "Низкий", owner: "Анна Соколова", updated: "12.03.2026 16:20" },
+        { taskId: 83390, module: "Checklists", project: "19-04-55", status: "Просрочена", priority: "Высокий", owner: "Илья Тарасов", updated: "11.03.2026 09:00" },
+        { taskId: 83371, module: "Inventory", project: "21-48-10", status: "В работе", priority: "Средний", owner: "Олег Власов", updated: "13.03.2026 11:24" }
+      ];
+
+      var detailMap = {
+        83412: [
+          { stepId: 1, stage: "Регистрация", performer: "Марина Орлова", date: "13.03.2026 08:30", result: "Создана задача", note: "Инициировано по итогам инцидента API" },
+          { stepId: 2, stage: "Анализ", performer: "Алексей Хромов", date: "13.03.2026 09:05", result: "Подтверждено расхождение", note: "Найдены 17 точек с отклонением" },
+          { stepId: 3, stage: "Исполнение", performer: "Команда Shops", date: "13.03.2026 10:40", result: "В процессе", note: "Сверка по 8 магазинам завершена" }
+        ],
+        83408: [
+          { stepId: 1, stage: "Регистрация", performer: "Павел Попов", date: "13.03.2026 09:20", result: "Создана заявка", note: "Требуется пересчет CAPEX" },
+          { stepId: 2, stage: "Согласование", performer: "Финансовый комитет", date: "13.03.2026 10:35", result: "На рассмотрении", note: "Ожидается подтверждение лимита" }
+        ],
+        83397: [
+          { stepId: 1, stage: "Подписание", performer: "Анна Соколова", date: "12.03.2026 14:05", result: "Выполнено", note: "Акт подписан обеими сторонами" },
+          { stepId: 2, stage: "Архивация", performer: "EDM Bot", date: "12.03.2026 16:20", result: "Закрыто", note: "Документы отправлены в архив" }
+        ],
+        83390: [
+          { stepId: 1, stage: "Планирование", performer: "Илья Тарасов", date: "10.03.2026 18:00", result: "Назначено", note: "Срок установлен до 11.03" },
+          { stepId: 2, stage: "Контроль", performer: "Руководитель смены", date: "11.03.2026 09:10", result: "Просрочено", note: "Ответственный не подтвердил выполнение" }
+        ],
+        83371: [
+          { stepId: 1, stage: "Сбор данных", performer: "Олег Власов", date: "13.03.2026 10:15", result: "Выполнено", note: "Собраны остатки по складам" },
+          { stepId: 2, stage: "Проверка", performer: "Склад QA", date: "13.03.2026 11:24", result: "В работе", note: "Проверка аномалий продолжается" }
+        ]
+      };
+
+      var agHost = document.getElementById("wrmAgGrid");
+      var caption = document.getElementById("wrmDetailCaption");
+      var refreshBtn = document.getElementById("wrmRefreshGridsBtn");
+      var dateRangeBox = null;
+
+      var detailGrid = $("#wrmDxDetailGrid").dxDataGrid({
+        dataSource: [],
+        keyExpr: "stepId",
+        showBorders: true,
+        rowAlternationEnabled: true,
+        hoverStateEnabled: true,
+        columnAutoWidth: true,
+        wordWrapEnabled: true,
+        noDataText: "Нет шагов по выбранной задаче",
+        filterRow: {
+          visible: true,
+          applyFilter: "auto"
+        },
+        headerFilter: {
+          visible: true
+        },
+        paging: {
+          pageSize: 6
+        },
+        pager: {
+          showInfo: true,
+          showPageSizeSelector: true,
+          allowedPageSizes: [6, 12, 24]
+        },
+        columns: [
+          { dataField: "stage", caption: "Этап" },
+          { dataField: "performer", caption: "Исполнитель" },
+          { dataField: "date", caption: "Дата" },
+          { dataField: "result", caption: "Результат" },
+          { dataField: "note", caption: "Комментарий" }
+        ]
+      }).dxDataGrid("instance");
+
+      function updateDetails(task) {
+        var details = detailMap[task.taskId] || [];
+        caption.textContent = "Задача #" + task.taskId + " • " + task.module + " • " + task.status + " • Ответственный: " + task.owner;
+        detailGrid.option("dataSource", details);
+      }
+
+      if ($("#wrmDateRange").length) {
+        dateRangeBox = $("#wrmDateRange").dxDateRangeBox({
+          startDate: new Date(2026, 2, 1),
+          endDate: new Date(2026, 2, 14),
+          startDateLabel: "Дата с",
+          endDateLabel: "Дата по",
+          startDatePlaceholder: "Дата с",
+          endDatePlaceholder: "Дата по",
+          labelMode: "static",
+          displayFormat: "dd.MM.yyyy",
+          showClearButton: true,
+          useMaskBehavior: true,
+          applyButtonText: "Применить",
+          cancelButtonText: "Отмена",
+          pickerType: "calendar"
+        }).dxDateRangeBox("instance");
+      }
+
+      function applyAgTheme() {
+        if (!agHost) return;
+        var isDark = document.body.classList.contains("wrm-theme-dark");
+        agHost.classList.toggle("ag-theme-alpine-dark", isDark);
+        agHost.classList.toggle("ag-theme-alpine", !isDark);
+      }
+
+      var gridOptions = {
+        defaultColDef: {
+          resizable: true,
+          sortable: true,
+          filter: true,
+          floatingFilter: true
+        },
+        animateRows: true,
+        rowSelection: "single",
+        suppressRowClickSelection: false,
+        columnDefs: [
+          { field: "taskId", headerName: "ID", width: 100 },
+          { field: "module", headerName: "Модуль", width: 140 },
+          { field: "project", headerName: "Проект", width: 120 },
+          { field: "status", headerName: "Статус", width: 150 },
+          { field: "priority", headerName: "Приоритет", width: 130 },
+          { field: "owner", headerName: "Ответственный", width: 180 },
+          { field: "updated", headerName: "Обновлено", minWidth: 170, flex: 1 }
+        ],
+        rowData: masterRows,
+        onRowClicked: function (event) {
+          if (!event || !event.data) return;
+          updateDetails(event.data);
+        },
+        onGridReady: function (params) {
+          params.api.sizeColumnsToFit();
+          if (masterRows.length) {
+            params.api.getDisplayedRowAtIndex(0).setSelected(true);
+            updateDetails(masterRows[0]);
+          }
+          window.addEventListener("resize", function () {
+            params.api.sizeColumnsToFit();
+          });
+        }
+      };
+
+      new agGrid.Grid(agHost, gridOptions);
+      applyAgTheme();
+
+      if (refreshBtn) {
+        refreshBtn.addEventListener("click", function () {
+          if (refreshBtn.classList.contains("is-spinning")) return;
+          refreshBtn.classList.add("is-spinning");
+          setTimeout(function () {
+            refreshBtn.classList.remove("is-spinning");
+          }, 900);
+        });
+      }
+
+      if (window.MutationObserver) {
+        var observer = new MutationObserver(function () {
+          applyAgTheme();
+        });
+        observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+      }
+    })();
+  </script>
+  <script src="./sidebar-codex.js"></script>
+</body>
+</html>
+
+
+
+
+
