@@ -2280,6 +2280,13 @@ body.wrm-body {
   color: #dbe7f0 !important;
 }
 
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-editor-outlined.dx-texteditor-with-floating-label.dx-daterangebox .dx-label::before,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-editor-outlined.dx-texteditor-with-label:not(.dx-texteditor-label-outside).dx-daterangebox .dx-label::before,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-editor-outlined.dx-texteditor-with-floating-label.dx-datebox .dx-label::before,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-editor-outlined.dx-texteditor-with-label:not(.dx-texteditor-label-outside).dx-datebox .dx-label::before {
+  background-color: rgba(20, 34, 47, 0.96) !important;
+}
+
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-placeholder::before,
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-dropdowneditor-icon,
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-icon {
