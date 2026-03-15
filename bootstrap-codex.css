@@ -2211,16 +2211,30 @@ body.wrm-body {
 }
 
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-texteditor {
-  background: var(--wrm-glass-bg-strong);
-  border-color: var(--wrm-glass-line);
+  background: var(--wrm-glass-bg-strong) !important;
+  border-color: var(--wrm-glass-line) !important;
 }
 
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-texteditor-input {
-  color: #dbe7f0;
+  color: #dbe7f0 !important;
 }
 
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox-separator {
-  color: #9fb5c8;
+  color: #9fb5c8 !important;
+}
+
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-texteditor-container,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-texteditor-input-container,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-texteditor-buttons-container {
+  background: rgba(20, 34, 47, 0.96) !important;
+  border-color: rgba(86, 122, 149, 0.8) !important;
+}
+
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-placeholder::before,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-dropdowneditor-icon,
+.wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox .dx-icon {
+  color: #9fb5c8 !important;
 }
 
 .wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper,
@@ -2291,6 +2305,31 @@ body.wrm-body {
 .wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-hover,
 .wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-focused,
 .wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-active {
+  background: rgba(64, 104, 133, 0.34) !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-base,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-context-menu,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-context-menu-container,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-items-container,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-submenu,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item-content,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item-wrapper {
+  background: rgba(18, 31, 43, 0.96) !important;
+  border-color: rgba(74, 105, 128, 0.66) !important;
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item .dx-icon,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item .dx-menu-item-text {
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item.dx-state-hover,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item.dx-state-focused,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item.dx-state-active,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item.dx-menu-item-selected {
   background: rgba(64, 104, 133, 0.34) !important;
 }
 
