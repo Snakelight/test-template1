@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebRM Core - Дашборд</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./bootstrap-codex.css">
 </head>
 <body class="wrm-body">
@@ -20,7 +21,9 @@
         <li><a href="./04-analytics.html">Аналитика</a></li>
         <li><a href="./05-workflow.html">Задачи</a></li>
         <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
         <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
       </ul>
     </div>
   </nav>
@@ -31,7 +34,7 @@
       <p>Главный экран для руководителя: критичные метрики, активные модули и события по SLA в одном контуре.</p>
     </div>
 
-    <div class="row">
+    <div class="row wrm-wrap-gap-2 wrm-stack-gap">
       <div class="col-md-3 col-sm-6">
         <div class="panel panel-default metric-panel">
           <div class="panel-body">
@@ -70,7 +73,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row wrm-stack-gap-md">
       <div class="col-md-4">
         <div class="panel panel-default wrm-panel">
           <div class="panel-heading">Ключевые модули</div>
@@ -85,7 +88,7 @@
       <div class="col-md-4">
         <div class="panel panel-default wrm-panel">
           <div class="panel-heading">События за сегодня</div>
-          <div class="panel-body">
+          <div class="panel-body wrm-events-feed">
             <p><span class="wrm-muted">09:15</span> Закрыт инцидент по кассовому API в макрорегионе Центр.</p>
             <p><span class="wrm-muted">10:02</span> Обновлен бюджет проекта 11-22-33, этап "Разработка".</p>
             <p><span class="wrm-muted">11:24</span> Сформирован реестр задач для ревизии магазинов (124 точки).</p>
@@ -112,4 +115,8 @@
   <script src="./sidebar-codex.js"></script>
 </body>
 </html>
+
+
+
+
 

@@ -149,8 +149,45 @@
     ]
   };
 
+  var iconMap = {
+    "alert": "bi-exclamation-triangle",
+    "barcode": "bi-upc-scan",
+    "book": "bi-journal-text",
+    "briefcase": "bi-briefcase-fill",
+    "calendar": "bi-calendar3",
+    "check": "bi-check2-circle",
+    "cog": "bi-gear",
+    "credit-card": "bi-credit-card",
+    "dashboard": "bi-speedometer2",
+    "earphone": "bi-headset",
+    "edit": "bi-pencil-square",
+    "equalizer": "bi-sliders2-vertical",
+    "file": "bi-file-earmark-text",
+    "folder-open": "bi-folder2-open",
+    "home": "bi-house-door-fill",
+    "inbox": "bi-inbox-fill",
+    "link": "bi-link-45deg",
+    "list-alt": "bi-card-list",
+    "lock": "bi-lock-fill",
+    "map-marker": "bi-geo-alt",
+    "ok-circle": "bi-check-circle",
+    "pencil": "bi-pencil",
+    "refresh": "bi-arrow-clockwise",
+    "shopping-cart": "bi-cart3",
+    "signal": "bi-bar-chart",
+    "stats": "bi-bar-chart-line",
+    "tasks": "bi-list-check",
+    "th-list": "bi-list-ul",
+    "time": "bi-clock-history",
+    "transfer": "bi-arrow-left-right",
+    "usd": "bi-currency-dollar",
+    "warning-sign": "bi-exclamation-triangle-fill",
+    "wrench": "bi-wrench"
+  };
+
   function iconClass(name) {
-    return "glyphicon glyphicon-" + (name || "file");
+    var key = String(name || "file").toLowerCase();
+    return "bi " + (iconMap[key] || "bi-file-earmark-text");
   }
 
   function escapeHtml(value) {
@@ -232,6 +269,168 @@
     return button;
   }
 
+  function createPrintQueue(navRight) {
+    if (!navRight) return null;
+
+    var existingTrigger = navRight.querySelector(".wrm-print-queue-link");
+    var existingPanel = document.getElementById("wrmPrintQueueOffcanvas");
+    if (existingTrigger && existingPanel) {
+      return { trigger: existingTrigger, panel: existingPanel };
+    }
+
+    var queueItems = [
+      { doc: "DOC-2026-0142", store: "\u041c\u0430\u0433\u0430\u0437\u0438\u043d 017", status: "\u0413\u043e\u0442\u043e\u0432 \u043a \u043f\u0435\u0447\u0430\u0442\u0438", eta: "14:10" },
+      { doc: "DOC-2026-0143", store: "\u041c\u0430\u0433\u0430\u0437\u0438\u043d 042", status: "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 SLA", eta: "14:15" },
+      { doc: "DOC-2026-0144", store: "\u0421\u043a\u043b\u0430\u0434 \u0426\u0435\u043d\u0442\u0440", status: "\u0413\u043e\u0442\u043e\u0432 \u043a \u043f\u0435\u0447\u0430\u0442\u0438", eta: "14:17" },
+      { doc: "DOC-2026-0145", store: "\u041c\u0430\u0433\u0430\u0437\u0438\u043d 103", status: "\u041e\u0436\u0438\u0434\u0430\u0435\u0442 \u043f\u043e\u0434\u043f\u0438\u0441\u044c", eta: "14:21" },
+      { doc: "DOC-2026-0146", store: "\u041c\u0430\u0433\u0430\u0437\u0438\u043d 009", status: "\u0413\u043e\u0442\u043e\u0432 \u043a \u043f\u0435\u0447\u0430\u0442\u0438", eta: "14:24" }
+    ];
+
+    if (!existingTrigger) {
+      var item = document.createElement("li");
+      item.className = "wrm-print-queue-item";
+
+      var trigger = document.createElement("a");
+      trigger.href = "#";
+      trigger.className = "wrm-print-queue-link";
+      trigger.setAttribute("aria-controls", "wrmPrintQueueOffcanvas");
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.innerHTML =
+        '<i class="bi bi-printer" aria-hidden="true"></i>' +
+        '<span class="wrm-print-queue-text">\u041e\u0447\u0435\u0440\u0435\u0434\u044c \u043f\u0435\u0447\u0430\u0442\u0438</span>' +
+        '<span class="wrm-print-queue-count">' + String(queueItems.length) + "</span>";
+
+      item.appendChild(trigger);
+      navRight.appendChild(item);
+      existingTrigger = trigger;
+    }
+
+    if (!existingPanel) {
+      var listHtml = "";
+      for (var i = 0; i < queueItems.length; i += 1) {
+        var q = queueItems[i];
+        listHtml +=
+          '<li class="list-group-item wrm-print-item">' +
+          '<div class="wrm-print-item-main">' +
+          '<div class="wrm-print-item-doc">' + escapeHtml(q.doc) + "</div>" +
+          '<div class="wrm-print-item-meta">' + escapeHtml(q.store) + " • " + escapeHtml(q.eta) + "</div>" +
+          "</div>" +
+          '<span class="badge text-bg-secondary">' + escapeHtml(q.status) + "</span>" +
+          "</li>";
+      }
+
+      var panel = document.createElement("div");
+      panel.id = "wrmPrintQueueOffcanvas";
+      panel.className = "offcanvas offcanvas-end wrm-print-offcanvas";
+      panel.tabIndex = -1;
+      panel.setAttribute("aria-labelledby", "wrmPrintQueueTitle");
+      panel.setAttribute("aria-hidden", "true");
+      panel.innerHTML =
+        '<div class="offcanvas-header">' +
+        '<h5 id="wrmPrintQueueTitle" class="offcanvas-title">\u041e\u0447\u0435\u0440\u0435\u0434\u044c \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u043e\u0432 \u043d\u0430 \u043f\u0435\u0447\u0430\u0442\u044c</h5>' +
+        '<button type="button" class="btn-close" data-wrm-print-close aria-label="\u0417\u0430\u043a\u0440\u044b\u0442\u044c"></button>' +
+        "</div>" +
+        '<div class="offcanvas-body">' +
+        '<p class="wrm-print-offcanvas-note">\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b, \u0433\u043e\u0442\u043e\u0432\u044b\u0435 \u043a \u0432\u044b\u0437\u043e\u0432\u0443 \u043d\u0430 \u043f\u0435\u0447\u0430\u0442\u044c.</p>' +
+        '<ul class="list-group">' + listHtml + "</ul>" +
+        '<div class="mt-3 d-flex gap-2">' +
+        '<button type="button" class="btn btn-primary btn-sm">\u0412\u044b\u0437\u0432\u0430\u0442\u044c \u0432 \u043f\u0435\u0447\u0430\u0442\u044c</button>' +
+        '<button type="button" class="btn btn-default btn-sm" data-wrm-print-close>\u0417\u0430\u043a\u0440\u044b\u0442\u044c</button>' +
+        "</div>" +
+        "</div>";
+
+      body.appendChild(panel);
+      existingPanel = panel;
+    }
+
+    return { trigger: existingTrigger, panel: existingPanel };
+  }
+
+  function initPrintQueueBehavior(printQueue) {
+    if (!printQueue || !printQueue.trigger || !printQueue.panel) return;
+
+    var trigger = printQueue.trigger;
+    var panel = printQueue.panel;
+    var backdrop = null;
+
+    function getBackdrop() {
+      if (backdrop && document.body.contains(backdrop)) return backdrop;
+      backdrop = document.querySelector(".wrm-print-offcanvas-backdrop");
+      if (backdrop) return backdrop;
+      backdrop = document.createElement("div");
+      backdrop.className = "offcanvas-backdrop fade wrm-print-offcanvas-backdrop";
+      document.body.appendChild(backdrop);
+      return backdrop;
+    }
+
+    function hidePanel() {
+      panel.classList.remove("show");
+      panel.setAttribute("aria-hidden", "true");
+      panel.removeAttribute("aria-modal");
+      trigger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("wrm-print-queue-open");
+      var bd = getBackdrop();
+      bd.classList.remove("show");
+      setTimeout(function () {
+        if (bd && bd.parentNode) {
+          bd.parentNode.removeChild(bd);
+        }
+      }, 180);
+    }
+
+    function showPanel() {
+      panel.classList.add("show");
+      panel.removeAttribute("aria-hidden");
+      panel.setAttribute("aria-modal", "true");
+      trigger.setAttribute("aria-expanded", "true");
+      document.body.classList.add("wrm-print-queue-open");
+      var bd = getBackdrop();
+      requestAnimationFrame(function () {
+        bd.classList.add("show");
+      });
+    }
+
+    function togglePanel() {
+      if (panel.classList.contains("show")) {
+        hidePanel();
+        return;
+      }
+      showPanel();
+    }
+
+    trigger.addEventListener("click", function (event) {
+      event.preventDefault();
+      togglePanel();
+    });
+
+    panel.addEventListener("click", function (event) {
+      if (event.target.closest("[data-wrm-print-close]")) {
+        event.preventDefault();
+        hidePanel();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!panel.classList.contains("show")) return;
+      var clickedTrigger = event.target.closest(".wrm-print-queue-link");
+      if (clickedTrigger) return;
+      if (panel.contains(event.target)) return;
+      if (event.target.classList && event.target.classList.contains("wrm-print-offcanvas-backdrop")) return;
+      hidePanel();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && panel.classList.contains("show")) {
+        hidePanel();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.classList || !event.target.classList.contains("wrm-print-offcanvas-backdrop")) return;
+      hidePanel();
+    });
+  }
+
   function createSidebar() {
     var sidebar = document.getElementById("wrmSidebar");
     if (sidebar) return sidebar;
@@ -252,11 +451,11 @@
       '<div class="wrm-sidebar-title">Меню</div>' +
       '<div class="wrm-sidebar-search-row">' +
       '<label class="wrm-sidebar-search">' +
-      '<span class="glyphicon glyphicon-search" aria-hidden="true"></span>' +
+      '<i class="bi bi-search" aria-hidden="true"></i>' +
       '<input type="text" id="wrmSidebarSearch" autocomplete="off" placeholder="Поиск по меню">' +
       "</label>" +
       '<button type="button" class="btn btn-default wrm-sidebar-refresh" id="wrmSidebarRefresh" aria-label="Обновить меню">' +
-      '<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>' +
+      '<i class="bi bi-arrow-clockwise" aria-hidden="true"></i>' +
       "</button>" +
       "</div>" +
       "</div>" +
@@ -339,7 +538,7 @@
       toggle.innerHTML =
         '<span class="' + iconClass(item.icon) + '" aria-hidden="true"></span>' +
         '<span class="wrm-tree-label">' + escapeHtml(item.text) + "</span>" +
-        '<span class="glyphicon glyphicon-chevron-down wrm-tree-caret" aria-hidden="true"></span>';
+        '<i class="bi bi-chevron-down wrm-tree-caret" aria-hidden="true"></i>';
 
       toggle.addEventListener("click", function () {
         li.classList.toggle("is-open");
@@ -381,6 +580,8 @@
   function init() {
     var toggleButton = createToggleButton();
     var themeToggle = createThemeToggle();
+    var navRight = nav.querySelector(".navbar-nav.navbar-right");
+    var printQueue = createPrintQueue(navRight);
     var sidebar = createSidebar();
     var backdrop = createBackdrop(sidebar);
     var catsRoot = sidebar.querySelector("#wrmSidebarCats");
@@ -405,13 +606,13 @@
     }
 
     function updateToggleVisual() {
-      var icon = "glyphicon-menu-hamburger";
+      var icon = "bi-list";
       if (!isMobile()) {
         icon = body.classList.contains("wrm-sidebar-collapsed")
-          ? "glyphicon-chevron-right"
-          : "glyphicon-chevron-left";
+          ? "bi-chevron-right"
+          : "bi-chevron-left";
       }
-      toggleButton.innerHTML = '<span class="glyphicon ' + icon + '" aria-hidden="true"></span>';
+      toggleButton.innerHTML = '<i class="bi ' + icon + '" aria-hidden="true"></i>';
     }
 
     function updateThemeVisual() {
@@ -559,6 +760,8 @@
         applyTheme(currentTheme === "dark" ? "light" : "dark");
       });
     }
+
+    initPrintQueueBehavior(printQueue);
 
     renderCategories();
     renderTree();

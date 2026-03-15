@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebRM Core - Реестр задач</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./bootstrap-codex.css">
 </head>
 <body class="wrm-body">
@@ -20,7 +21,9 @@
         <li><a href="./04-analytics.html">Аналитика</a></li>
         <li><a href="./05-workflow.html">Задачи</a></li>
         <li><a href="./06-form-modal-bootstrap.html">Форма + Modal</a></li>
+        <li><a href="./08-grid-master-detail.html">AG + DX Grid</a></li>
         <li><a href="./07-loaders.html">Лоадеры</a></li>
+        <li><a href="./09-bootstrap-components.html">Bootstrap 5 UI</a></li>
       </ul>
     </div>
   </nav>
@@ -34,18 +37,18 @@
     <div class="panel panel-default wrm-panel">
       <div class="panel-heading">Фильтры и действия</div>
       <div class="panel-body">
-        <div class="row">
+        <div class="row wrm-wrap-gap-3 wrm-stack-gap">
           <div class="col-md-2 col-sm-4"><select class="form-control"><option>Модуль: Все</option><option>Shops</option><option>Finance</option><option>Checklists</option></select></div>
           <div class="col-md-2 col-sm-4"><select class="form-control"><option>Статус: Все</option><option>Новая</option><option>В работе</option><option>На согласовании</option></select></div>
           <div class="col-md-2 col-sm-4"><input class="form-control" type="text" placeholder="Ответственный"></div>
           <div class="col-md-2 col-sm-4"><input class="form-control" type="date"></div>
-          <div class="col-md-2 col-sm-4"><button class="btn btn-primary btn-block">Применить</button></div>
-          <div class="col-md-2 col-sm-4"><button class="btn btn-default btn-block">Экспорт XLSX</button></div>
+          <div class="col-md-2 col-sm-4"><button class="btn btn-primary w-100">Применить</button></div>
+          <div class="col-md-2 col-sm-4"><button class="btn btn-default w-100">Экспорт XLSX</button></div>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row wrm-wrap-gap-2 wrm-stack-gap">
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Всего записей</div><div class="metric-value">1 284</div></div></div></div>
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">В работе</div><div class="metric-value">326</div></div></div></div>
       <div class="col-md-3 col-sm-6"><div class="panel panel-default metric-panel"><div class="panel-body"><div class="metric-label">Просрочено</div><div class="metric-value">41</div></div></div></div>
@@ -92,4 +95,8 @@
   <script src="./sidebar-codex.js"></script>
 </body>
 </html>
+
+
+
+
 
