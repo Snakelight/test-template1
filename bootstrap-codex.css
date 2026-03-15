@@ -2186,6 +2186,22 @@ body.wrm-body {
   background: rgba(30, 49, 66, 0.62);
 }
 
+.wrm-body.wrm-theme-dark .wrm-dx-grid .dx-datagrid-filter-row > td {
+  background: rgba(25, 42, 57, 0.9);
+  border-color: rgba(74, 105, 128, 0.66);
+}
+
+.wrm-body.wrm-theme-dark .wrm-dx-grid .dx-datagrid-filter-row .dx-texteditor {
+  background: rgba(16, 29, 41, 0.94);
+  border-color: rgba(86, 122, 149, 0.8);
+}
+
+.wrm-body.wrm-theme-dark .wrm-dx-grid .dx-datagrid-filter-row .dx-texteditor-input,
+.wrm-body.wrm-theme-dark .wrm-dx-grid .dx-datagrid-filter-row .dx-placeholder::before,
+.wrm-body.wrm-theme-dark .wrm-dx-grid .dx-datagrid-filter-row .dx-icon {
+  color: #dbe7f0;
+}
+
 .wrm-body.wrm-theme-dark .wrm-detail-caption {
   color: #a8bfd1;
 }
@@ -2205,6 +2221,48 @@ body.wrm-body {
 
 .wrm-body.wrm-theme-dark .wrm-range-box .dx-date-rangebox-separator {
   color: #9fb5c8;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-popup .dx-overlay-content {
+  background: rgba(18, 31, 43, 0.96);
+  border-color: rgba(86, 122, 149, 0.84);
+  color: #dbe7f0;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-body,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-view,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-navigator {
+  background: rgba(18, 31, 43, 0.96);
+  color: #dbe7f0;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-cell,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-week-number {
+  color: #dbe7f0;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-empty-cell {
+  color: #6e869a;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-button-mode-contained,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-navigator .dx-button {
+  background: rgba(29, 47, 62, 0.92);
+  border-color: rgba(86, 122, 149, 0.62);
+  color: #dbe7f0;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-state-hover,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-cell.dx-state-hover {
+  background: rgba(64, 104, 133, 0.34);
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-cell.dx-calendar-selected-date,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper .dx-calendar-cell.dx-calendar-contoured-date {
+  background: rgba(67, 123, 165, 0.85);
+  color: #ffffff;
 }
 
 .wrm-body.wrm-theme-dark .wrm-radio-item,
