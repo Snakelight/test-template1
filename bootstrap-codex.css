@@ -2265,6 +2265,71 @@ body.wrm-body {
   color: #ffffff;
 }
 
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-overlay-content,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-popup-content,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-header-filter-menu,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-daterangebox-wrapper {
+  background: rgba(18, 31, 43, 0.96) !important;
+  border-color: rgba(86, 122, 149, 0.84) !important;
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-popup-title,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-popup-title .dx-toolbar-label,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item-content,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-menu-item-text {
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list .dx-list-item {
+  background: rgba(18, 31, 43, 0.96) !important;
+  border-color: rgba(74, 105, 128, 0.66) !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-hover,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-focused,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-list-item.dx-state-active {
+  background: rgba(64, 104, 133, 0.34) !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-checkbox-icon {
+  background: rgba(16, 29, 41, 0.94) !important;
+  border-color: rgba(116, 148, 172, 0.92) !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-checkbox-checked .dx-checkbox-icon {
+  background: rgba(67, 123, 165, 0.85) !important;
+  border-color: rgba(139, 181, 210, 0.95) !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-button-mode-contained,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-button-normal {
+  background: rgba(29, 47, 62, 0.92) !important;
+  border-color: rgba(86, 122, 149, 0.62) !important;
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-body,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-view,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-navigator {
+  background: rgba(18, 31, 43, 0.96) !important;
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-cell,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-cell span,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-caption-button {
+  color: #dbe7f0 !important;
+}
+
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-empty-cell,
+.wrm-body.wrm-theme-dark .dx-overlay-wrapper .dx-calendar-other-month {
+  color: #6e869a !important;
+}
+
 .wrm-body.wrm-theme-dark .wrm-radio-item,
 .wrm-body.wrm-theme-dark .wrm-switch {
   background: #142331;
