@@ -9,7 +9,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-grid.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-theme-alpine.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@29.3.5/styles/ag-theme-alpine-dark.css">
-  <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.light.css">
+  <link
+    id="wrmDxThemeLink"
+    rel="stylesheet"
+    href="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.light.css"
+    data-theme-light="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.light.css"
+    data-theme-dark="https://cdn3.devexpress.com/jslib/23.2.6/css/dx.dark.css">
   <link rel="stylesheet" href="./bootstrap-codex.css?v=20260315-dark2">
 </head>
 <body class="wrm-body">
@@ -95,6 +100,32 @@
   <script src="https://cdn3.devexpress.com/jslib/23.2.6/js/localization/dx.messages.ru.js"></script>
   <script>
     (function () {
+      function syncDxThemeLinkByBody() {
+        var link = document.getElementById("wrmDxThemeLink");
+        if (!link) return;
+        var darkHref = link.getAttribute("data-theme-dark");
+        var lightHref = link.getAttribute("data-theme-light");
+        var useDark = document.body.classList.contains("wrm-theme-dark");
+        var targetHref = useDark ? darkHref : lightHref;
+        if (!targetHref || link.getAttribute("href") === targetHref) return;
+        link.setAttribute("href", targetHref);
+      }
+
+      function applyStoredThemeForDx() {
+        var savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem("wrmTheme");
+        } catch (err) {}
+        if (savedTheme === "dark") {
+          document.body.classList.add("wrm-theme-dark");
+        } else if (savedTheme === "light") {
+          document.body.classList.remove("wrm-theme-dark");
+        }
+        syncDxThemeLinkByBody();
+      }
+
+      applyStoredThemeForDx();
+
       if (window.DevExpress && DevExpress.localization && typeof DevExpress.localization.locale === "function") {
         DevExpress.localization.locale("ru");
       }
@@ -238,6 +269,7 @@
 
       new agGrid.Grid(agHost, gridOptions);
       applyAgTheme();
+      syncDxThemeLinkByBody();
 
       if (refreshBtn) {
         refreshBtn.addEventListener("click", function () {
@@ -252,6 +284,7 @@
       if (window.MutationObserver) {
         var observer = new MutationObserver(function () {
           applyAgTheme();
+          syncDxThemeLinkByBody();
         });
         observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
       }
