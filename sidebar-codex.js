@@ -623,9 +623,20 @@
       themeToggle.setAttribute("aria-label", isDark ? "Светлая тема" : "Темная тема");
     }
 
+    function syncDevExtremeTheme(theme) {
+      var link = document.getElementById("wrmDxThemeLink");
+      if (!link) return;
+      var darkHref = link.getAttribute("data-theme-dark");
+      var lightHref = link.getAttribute("data-theme-light");
+      var nextHref = theme === "dark" ? darkHref : lightHref;
+      if (!nextHref || link.getAttribute("href") === nextHref) return;
+      link.setAttribute("href", nextHref);
+    }
+
     function applyTheme(theme) {
       currentTheme = theme === "dark" ? "dark" : "light";
       body.classList.toggle("wrm-theme-dark", currentTheme === "dark");
+      syncDevExtremeTheme(currentTheme);
       updateThemeVisual();
       try {
         localStorage.setItem("wrmTheme", currentTheme);
